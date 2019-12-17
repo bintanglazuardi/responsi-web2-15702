@@ -14,9 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-// Route::('/jobs', 'JobsController');
-// Route::('/employees', 'EmployeesController');
+Route::get('/info', function () {
+    return view('info');
+});
 Route::resource('/jobs', 'JobsController');
 Route::resource('/employees', 'EmployeesController');
 Auth::routes();

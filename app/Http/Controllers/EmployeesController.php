@@ -26,9 +26,9 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        $data = Employees::all();
+        $data = Jobs::all();
         //return view('')->with('', $data);
-        return view('employees.create');
+        return view('employees.create')->with('jobs', $data);
     }
 
     /**
