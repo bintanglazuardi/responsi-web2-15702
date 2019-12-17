@@ -15,8 +15,8 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $da = Employees::all();
-        return view('')->with('', $ta);
+        $data = Employees::all();
+        return view('employees.index')->with('employees', $data);
     }
 
     /**
@@ -26,8 +26,9 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        $da = Jobs::all();
-        return view('')->with('', $ta);
+        $data = Employees::all();
+        //return view('')->with('', $data);
+        return view('employees.create');
     }
 
     /**
@@ -53,7 +54,7 @@ class EmployeesController extends Controller
             'address' => $request->input('alamat')
         ]);
         $employees->save();
-        return redirect('employe');
+        return redirect('employees');
     }
 
     /**
@@ -77,7 +78,7 @@ class EmployeesController extends Controller
     {
         $jobs = Jobs::all();
         $data = Employees::where('id_employees', '=', $id)->firstOrFail();
-        return view('')->with('employees', $data)->with('jobs', $jobs);
+        return view('employees.edit')->with('employees', $data)->with('jobs', $jobs);
     }
 
     /**
@@ -104,7 +105,7 @@ class EmployeesController extends Controller
             'address' => $request->input('alamat')
         ];
         Employees::where('id_employees',$id)->update($data);
-        return redirect('employ');
+        return redirect('employees');
     }
 
     /**
@@ -116,6 +117,7 @@ class EmployeesController extends Controller
     public function destroy($id)
     {
         Employees::where('id_employees',$id)->delete();
-        return redirect('employe');
+        //return redirect('employe');
+        return redirect('employees');
     }
 }
